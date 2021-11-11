@@ -59,6 +59,7 @@ body {
     border: 2px solid #BF926B;
 }
 
+/* Correct/Incorrect classes CSS */
 .correct {
     color: green;
 }
@@ -66,4 +67,75 @@ body {
 .incorrect {
     color: red;
     text-decoration: underline;
+}
+
+/* Winning Message CSS */
+.winning-msg {
+    background-color: #402312f5;
+    color: #f1b442;
+    font-size: 3rem;
+    font-weight: 500;
+    
+    /* Position */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    /* Dimensions */
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+
+    /* Centering all content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Display */
+    display: none;
+}
+
+.winning-msg-text {
+    background-color: hsla(0, 0%, 100%, 0.3);
+    padding: 1rem 1.75rem;
+    margin: 3rem;
+    
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+
+    /* CSS Grid */
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 1rem;
+    column-gap: 3rem;
+
+    /* Centering all content */
+    justify-content: center;
+    align-items: center;
+}
+.winning-msg-text span {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.winning-msg button {
+    font-size: 1.3rem;
+    background-color: #e29a14;
+    border: 2px solid #402312;
+    border-radius: 0.75rem;
+    padding: 0.25em 0.5em;
+    margin: 1rem;
+    cursor: pointer;
+}
+.winning-msg button:hover {
+    background-color: #402312;
+    color: #e29a14;
+    border-color: #e29a14;
+}
+
+/*  The message only shows up if we add 'show' class to the element  */
+.winning-msg.show {
+    display: flex;
 }
