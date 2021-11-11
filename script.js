@@ -18,6 +18,7 @@ function getRandomQuote() {
 
 async function renderNewQuote() {
     /* In case of Restart */
+    removeConfetti()
     winningMsgElement.classList.remove('show')
 
     const data = await getRandomQuote()
@@ -92,6 +93,7 @@ function stopTimer(myTimer) {
 function endGame() {
     stopTimer(myTimer)
     winningMsgElement.classList.add('show')
+    startConfetti()
 
     /* Adding time data for the winning message */
     timeTakenElement.innerText = timerElement.innerText
