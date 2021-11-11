@@ -31,6 +31,8 @@ quoteInputElement.addEventListener('input', () => {
     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
     const arrayInput = quoteInputElement.value.split('')
 
+    let correct = true  /* This variable is true if *all* characters have been typed *correctly* */
+
     /* Comparing each character of the displayed quote with the input */
     arrayQuote.forEach((charSpan, index) => {
         const charInput = arrayInput[index]
@@ -38,6 +40,7 @@ quoteInputElement.addEventListener('input', () => {
             /* If the character hasn't been typed yet */
             charSpan.classList.remove('correct')
             charSpan.classList.remove('incorrect')
+            correct = false
         } else if (charInput === charSpan.innerText) {
             /* If the typed character matches */
             charSpan.classList.add('correct')
@@ -46,8 +49,11 @@ quoteInputElement.addEventListener('input', () => {
             /* If the typed character doesn't match */
             charSpan.classList.add('incorrect')
             charSpan.classList.remove('correct')
+            correct = false
         }
     })
+
+    if (correct) endGame() /* In case everything has been typed correctly, call endGame function */
 })
 
 function startTimer() {
@@ -65,6 +71,10 @@ function getTimerTime() {
 
 function stopTimer(myTimer) {
     clearInterval(myTimer);
+}
+
+function endGame() {
+    stopTimer(myTimer)
 }
 
 renderNewQuote()
