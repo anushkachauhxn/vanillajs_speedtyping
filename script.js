@@ -22,6 +22,7 @@ async function renderNewQuote() {
     winningMsgElement.classList.remove('show')
 
     /* Clearing the input and display element when a new quote is displayed */
+    timerElement.innerText = 0
     quoteInputElement.value = null
     quoteDisplayElement.innerText = 'Loading. . .'
 
@@ -75,7 +76,6 @@ quoteInputElement.addEventListener('input', () => {
 })
 
 function startTimer() {
-    timerElement.innerText = 0
     startTime = new Date()
     myTimer = setInterval(() => {
         timerElement.innerText = getTimerTime()
