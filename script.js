@@ -21,4 +21,27 @@ async function renderNewQuote() {
     quoteInputElement.value = null
 }
 
+quoteInputElement.addEventListener('input', () => {
+    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
+    const arrayInput = quoteInputElement.value.split('')
+    
+    /* Comparing each character of the displayed quote with the input */
+    arrayQuote.forEach((charSpan, index) => {
+        const charInput = arrayInput[index]
+        if (charInput == null) {
+            /* If the character hasn't been typed yet */
+            charSpan.classList.remove('correct')
+            charSpan.classList.remove('incorrect')
+        } else if (charInput === charSpan.innerText) {
+            /* If the typed character matches */
+            charSpan.classList.add('correct')
+            charSpan.classList.remove('incorrect')
+        } else {
+            /* If the typed character doesn't match */
+            charSpan.classList.add('incorrect')
+            charSpan.classList.remove('correct')
+        }
+    })
+})
+
 renderNewQuote()

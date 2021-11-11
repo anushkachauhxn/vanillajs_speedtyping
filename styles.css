@@ -58,3 +58,12 @@ body {
     outline: none;
     border: 2px solid #BF926B;
 }
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+    text-decoration: underline;
+}
