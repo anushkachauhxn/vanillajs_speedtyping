@@ -4,6 +4,9 @@ const quoteInputElement = document.getElementById('quoteInput')
 const timerElement = document.getElementById('timer')
 const winningMsgElement = document.getElementById('winningMsg')
 const restartButton = document.getElementById('restartButton')
+const timeTakenElement = document.getElementById('timeTaken')
+const charTypedElement = document.getElementById('charTyped')
+const wordsPerMinElement = document.getElementById('wordsPerMin')
 
 let startTime
 var myTimer
@@ -11,14 +14,15 @@ var myTimer
 function getRandomQuote() {
     return fetch(RANDOM_QUOTE_API_URL)
         .then(response => response.json())
-        .then(data => data.content)
 }
 
 async function renderNewQuote() {
     /* In case of Restart */
     winningMsgElement.classList.remove('show')
 
-    const quote = await getRandomQuote()
+    const data = await getRandomQuote()
+
+    const quote = data.content
     /* Displaying each character in a span element inside quoteDisplayElement */
     quoteDisplayElement.innerHTML = ''
     quote.split('').forEach(char => {
@@ -26,8 +30,13 @@ async function renderNewQuote() {
         charSpan.innerText = char
         quoteDisplayElement.appendChild(charSpan)
     });
+
     /* Clearing the input element when a new quote is displayed */
     quoteInputElement.value = null
+
+    /* Adding length data for the winning message */
+    const length = data.length
+    charTypedElement.innerText = length
 
     startTimer()
 }
@@ -83,6 +92,10 @@ function stopTimer(myTimer) {
 function endGame() {
     stopTimer(myTimer)
     winningMsgElement.classList.add('show')
+
+    /* Adding time data for the winning message */
+    timeTakenElement.innerText = timerElement.innerText
+    wordsPerMinElement.innerText = Math.floor(Number(charTypedElement.innerText) / Number(timeTakenElement.innerText))
 }
 
 renderNewQuote()
