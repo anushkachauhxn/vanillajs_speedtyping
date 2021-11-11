@@ -21,6 +21,10 @@ async function renderNewQuote() {
     removeConfetti()
     winningMsgElement.classList.remove('show')
 
+    /* Clearing the input and display element when a new quote is displayed */
+    quoteInputElement.value = null
+    quoteDisplayElement.innerText = 'Loading. . .'
+
     const data = await getRandomQuote()
 
     const quote = data.content
@@ -31,9 +35,6 @@ async function renderNewQuote() {
         charSpan.innerText = char
         quoteDisplayElement.appendChild(charSpan)
     });
-
-    /* Clearing the input element when a new quote is displayed */
-    quoteInputElement.value = null
 
     /* Adding length data for the winning message */
     const length = data.length
