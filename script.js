@@ -2,6 +2,8 @@ const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.getElementById('quoteDisplay')
 const quoteInputElement = document.getElementById('quoteInput')
 const timerElement = document.getElementById('timer')
+const winningMsgElement = document.getElementById('winningMsg')
+const restartButton = document.getElementById('restartButton')
 
 let startTime
 var myTimer
@@ -13,6 +15,9 @@ function getRandomQuote() {
 }
 
 async function renderNewQuote() {
+    /* In case of Restart */
+    winningMsgElement.classList.remove('show')
+
     const quote = await getRandomQuote()
     /* Displaying each character in a span element inside quoteDisplayElement */
     quoteDisplayElement.innerHTML = ''
@@ -26,6 +31,8 @@ async function renderNewQuote() {
 
     startTimer()
 }
+
+restartButton.addEventListener('click', renderNewQuote)
 
 quoteInputElement.addEventListener('input', () => {
     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
@@ -75,6 +82,7 @@ function stopTimer(myTimer) {
 
 function endGame() {
     stopTimer(myTimer)
+    winningMsgElement.classList.add('show')
 }
 
 renderNewQuote()
