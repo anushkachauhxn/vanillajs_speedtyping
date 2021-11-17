@@ -2,13 +2,22 @@
 
 This is a speed typing game built using HTML, CSS and JavaScript. 
 
+The text for the quotes was fetched from an API.
+
+<br>
+
 ### ⭐ Features:
 
-* Timer that shows the time taken
-* The text gets coloured as red if your input is incorrect and green if your input is correct. 
-* As soon as the whole text has been typed correctly, a second screen is shown containing:
-    * the statistics of the last game, and
-    * the Restart Button
+* **Timer:**            
+It shows the time taken by user.
+* **Coloured Text:**    
+The text gets coloured as red if your input is incorrect and green if your input is correct. 
+* **Result Screen:**    
+As soon as the whole text has been typed correctly, a second screen is shown containing:
+    * Statistics of the last game, and
+    * Restart Button
+
+<br>
 
 ### 💻 Deployed At:
 
